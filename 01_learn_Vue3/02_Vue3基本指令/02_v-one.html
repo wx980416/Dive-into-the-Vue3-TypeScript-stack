@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      当数据发生变化时，元素或者组件以及其所有的子元素将视为静态内容并且跳过
+      <h1 v-once>{{message}}</h1>
+      <h1>{{message}}</h1>
+      <button @click="add">+1</button>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            message: 0,
+          };
+        },
+        methods: {
+          add() {
+            this.message += 1;
+          },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>

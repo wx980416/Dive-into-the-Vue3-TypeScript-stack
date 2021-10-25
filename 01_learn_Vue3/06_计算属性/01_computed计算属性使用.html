@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <h1>{{message}}</h1>
+      <h1>{{handleMsg}}</h1>
+      <button @click="change">修改handleMsg</button>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            message: '我是计算属性',
+          };
+        },
+        methods: {
+          change() {
+            this.handleMsg = '传递的值';
+          },
+        },
+        computed: {
+          // 函数形式
+          handleMsg() {
+            return this.message + '处理过后的';
+          },
+          // 对象形式
+          handleMsg: {
+            get() {
+              return this.message + 'get返回的数据';
+            },
+            set(value) {
+              console.log(value);
+              // 修改
+              this.message = value;
+            },
+          },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>

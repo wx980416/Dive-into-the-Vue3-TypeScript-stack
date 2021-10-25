@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <input type="text" v-model="message" />
+      <button @click="changeMsg">changeMsg</button>
+      <h1>{{message}}</h1>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            message: '王鑫',
+          };
+        },
+        methods: {
+          changeMsg() {
+            this.message = 'wangxin';
+          },
+        },
+        watch: {
+          message(newValue, oldValue) {
+            console.log(newValue, oldValue);
+            console.log('触发了');
+          },
+          // 深度监听/立即执行
+          // message: {
+          //   handle(newValue, oldValue) {},
+          //   deep: true,
+          //   immediate: true,
+          // },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>

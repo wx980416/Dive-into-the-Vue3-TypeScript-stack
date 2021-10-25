@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+      .font {
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <div :class="className">111111111</div>
+      <div :class="{'active':isActive}">1111</div>
+      <button @click="toggle">切换颜色</button>
+
+      <div :class="{active: isActive, font: isFont}">111</div>
+
+      <div :class="styleObj">2222</div>
+
+      <div :class="getClassObj()">33333333</div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            className: 'active',
+            isActive: true,
+            isFont: true,
+            styleObj: {
+              active: true,
+              font: true,
+            },
+          };
+        },
+        methods: {
+          toggle() {
+            this.isActive = !this.isActive;
+          },
+          getClassObj() {
+            return {
+              active: true,
+              font: true,
+            };
+          },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>

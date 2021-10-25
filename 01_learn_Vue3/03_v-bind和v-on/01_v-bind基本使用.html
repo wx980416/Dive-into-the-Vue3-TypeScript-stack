@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <img v-bind:src="src"></img>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            message: 'Vue3',
+            src: 'https://i0.hdslb.com/bfs/feed-admin/c22765645393e853d4139cf23eb79ef5f689690b.jpg@320w_184h_1c_100q.jpg',
+          };
+        },
+        methods: {},
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>

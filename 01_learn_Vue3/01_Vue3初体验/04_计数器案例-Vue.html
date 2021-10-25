@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- template 写法1-->
+    <script type="x-template" id="model1">
+      <div>
+        <h1>{{counter}}</h1>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+    </script>
+    <!-- template 写法2 推荐!!!!-->
+    <template id="model2">
+      <div>
+        <h1>{{counter}}</h1>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+    </template>
+    <script src="./vue3.js"></script>
+    <script>
+      Vue.createApp({
+        template: '#model2',
+        data: function () {
+          return {
+            counter: 100,
+          };
+        },
+        methods: {
+          // 这里的方法不能使用箭头函数!!!!
+          increment() {
+            this.counter++;
+          },
+          decrement() {
+            this.counter--;
+          },
+        },
+      }).mount('#app');
+      // 注意要mount挂载！！！
+    </script>
+  </body>
+</html>

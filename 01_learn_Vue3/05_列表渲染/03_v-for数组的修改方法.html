@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <template id="my-app">
+      <ul>
+        <li v-for="(item, index) in list" :key="index">{{item}}</li>
+      </ul>
+      <input type="text" v-model="value" />
+      <button @click="add">add</button>
+      <button @click="slice">slice</button>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            list: ['王鑫', '李文浩', '翔宇中'],
+            value: '',
+          };
+        },
+        methods: {
+          add() {
+            this.list.push(this.value);
+          },
+          slice() {
+            this.list = this.list.slice(0, this.list.length - 1);
+          },
+        },
+      };
+
+      Vue.createApp(App).mount('#app');
+    </script>
+  </body>
+</html>
